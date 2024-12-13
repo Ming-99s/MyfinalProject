@@ -835,6 +835,9 @@ body{
             }
         }
     }
+    .scroll{
+        scroll-snap-align: none;
+    }
 
 
     
