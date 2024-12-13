@@ -18,7 +18,6 @@ body{
     font-family: "Roboto Condensed", sans-serif;
     /* overflow: hidden; */
     
-    scroll-snap-type: start;
 }
 .scroll{
     scroll-snap-align: start;
@@ -638,6 +637,7 @@ body{
                 }
                 #content{
                     .textBox{
+                        animation: none;
                         /* border: 2px rgb(72, 34, 34) solid; */
                         width: 200px;
                         .leftText{
@@ -835,10 +835,10 @@ body{
             }
         }
     }
+    
+    
     .scroll{
-        scroll-snap-align: unset;
+        scroll-snap-align:unset;
     }
-
-
     
 }
