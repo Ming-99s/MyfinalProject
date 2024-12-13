@@ -278,9 +278,11 @@ body{
         transform: translateX(0);
     }
 }
+
 #main{
     
     nav{
+
         .ruler{
             width: 100%;
             height: 1px;
@@ -320,7 +322,9 @@ body{
         video{
             position: absolute;
             z-index: -1;
+            width: 100%;
             top: 0;
+            /* width: 100%; */
         }
         
         .text{
@@ -384,7 +388,7 @@ body{
             }
         }
     }
-    #Design{
+    #Sound{
         text-align: center;
         h1{
             font-size: 100px;
@@ -393,107 +397,82 @@ body{
             font-size: 25px;
         }
         /* background-color: aliceblue; */
-        padding: 0rem 10%;
         color:white;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 50px;
-        .contianer{
+        gap: 100px;
+
+        .Container{
+            gap: 30px;
+            width: 100%;
             display: flex;
-            justify-content: space-between;
-            .box{
-                transition: 0.2s;
-                text-align: start;
-                border-radius: 10px;
-                width: 25%;
-                position: relative;
-                padding: 20px 30px;
-                height: 60vh;
-                background-size: cover;
-                background-image: url(https://images-porsche.imgix.net/-/media/BCE0DDD35E7E4D9CA16F7DA7480B8E92_76B645B61F5244E08438DFDD4F360BF6_BX24I3HOX0040_desktop?iar=0&w=699&ar=3%3A4&q=85&auto=format%201x,https://images-porsche.imgix.net/-/media/BCE0DDD35E7E4D9CA16F7DA7480B8E92_76B645B61F5244E08438DFDD4F360BF6_BX24I3HOX0040_desktop?iar=0&w=699&ar=3%3A4&q=45&dpr=2&auto=format%202x);
-                .top{
-                    display:flex;
-                    flex-direction: column;
-                    gap: 20px;
-                    .logo{
-                        filter: brightness(0) saturate(100%) invert(99%) sepia(81%) saturate(143%) hue-rotate(194deg) brightness(120%) contrast(100%);
-                        width: 80px;
-                    }
-                    p{
-                        font-size: 15px;
-                        border-radius: 2px;
-                        display: inline;
-                        padding: 5px 10px;
-                        font-weight: 300;
-                        cursor: pointer;
-                        transition: 0.3s;
-                        color:rgb(0, 0, 0);
-                        background-color: rgba(255, 255, 255, 0.644);
-                        &:hover{
-                            background-color: rgba(67, 66, 66, 0.425);
-                            color: white;
-                        }
-                    }
-                    
+            align-items: center;
+            justify-content: center;
+            .right{
+                width: 60%;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 38% 100%);
+                img{
+                    height: 600px;
                 }
-
-                .bot{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    p{
-                        font-size: 18px;
-                    }
-                    button{
-                        width: 100%;
-                        border: none;
-                        border-radius: 2px;
-                        padding: 5px 10px;
-                        transition: 0.3s;
-                        &:hover{
-                            scale: 1.05;
-                        }
-                    }
-
-                    
-                    .transparent{
-                        background-color: transparent;
-                        color: white;
-                        border: 1px solid white;
-                    }
-                }
-                z-index: 1;
+            }
+            .left{
+                width: 30%;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
-                &:hover{
-                    scale: 1.1;
-                }
-            }
-            .box::after{
-                z-index: -1;
-                left: 0;
-                content: '';
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                background-image: linear-gradient(rgba(255, 255, 255, 0),black );
-            }
-            .b2{
-                
-                background-image: url(https://images-porsche.imgix.net/-/media/1A0123EB8FEF44728C80D8DC0F9743E2_39153352CF0E4BC19CF05514140A17C5_Nevada---Mobile?iar=0&w=407&ar=9%3A16&q=85&auto=format%201x,https://images-porsche.imgix.net/-/media/1A0123EB8FEF44728C80D8DC0F9743E2_39153352CF0E4BC19CF05514140A17C5_Nevada---Mobile?iar=0&w=407&ar=9%3A16&q=45&dpr=2&auto=format%202x);
-            }
-            .b3{
-                .top{
-                    .logo{
-                        width:200px;
+                align-items: center;
+                gap: 20px;
+
+                #button{
+                    padding: 10px;
+                    border-radius: 10px;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    border: 2px solid white;
+                    .play-pause{
+                        padding: 10px;
+                        background-color: white;
+                        clip-path: circle();
+                        i{
+                            width: 20px;
+                            /* font-size: 20px; */
+                            height: 20px;
+                            color: black;
+                        }
                     }
+                    input:checked ~ label .fa-pause{
+                        display: none;
+                    }
+                    input:not(:checked) ~ label .fa-play{
+                        display: none;
+                    }
+                    input:not(:checked) ~ .wave{
+                        display: flex;
+                    }
+
+
+                    .wave{
+                        display: flex;
+                        transform: rotate(180deg);
+                        gap: 5px;
+                        animation: rise 0.5s linear;
+                        display: none;
+                        .line{
+                            transition: 0.5s;
+                            animation: wave 0.5s linear infinite ;
+                            animation-delay: calc(var(--position)* 0.25s);
+                            height: 25px;
+                            width: 2px;
+                            background-color: white;
+                        }
+                    }
+
                 }
-                background-image: url(https://images-porsche.imgix.net/-/media/B768914D594948D5A6F6D413CA4F68BC_3C5328C36D9B4942AF36A4CB07AE1FF2_NEW-Panamera---Mobile?iar=0&w=645&ar=9%3A16&q=85&auto=format%201x,https://images-porsche.imgix.net/-/media/B768914D594948D5A6F6D413CA4F68BC_3C5328C36D9B4942AF36A4CB07AE1FF2_NEW-Panamera---Mobile?iar=0&w=645&ar=9%3A16&q=45&dpr=2&auto=format%202x);
             }
         }
+       
     }
     #Gallery{
         overflow: hidden;
@@ -607,4 +586,256 @@ body{
         }
     }
    
+}
+@keyframes wave{
+    0%,100%{
+        height: 15px;
+    }
+    50%{
+        height: 25px;
+    }
+}
+@keyframes rise {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media (max-width:440px){
+    body{
+        width: 100vw;
+        overflow-x: hidden;
+        /* background-color: aliceblue; */
+    }
+    #headContainer{
+        nav{
+            img{
+                width: 35%;
+            }
+        }
+        
+        #container{
+            h1{
+                top:39%;
+                line-height: 70px;
+                font-size: 150px;
+                p{
+                    font-size: 20px;
+                }
+            }
+            
+
+            #slider{
+                width: 100%;
+                #overflow{
+                    width: 100%;
+                    .scroll{
+                        height: 200px;
+                    }
+                }
+                #content{
+                    .textBox{
+                        /* border: 2px rgb(72, 34, 34) solid; */
+                        width: 200px;
+                        .leftText{
+                            width: 100%;
+                            top: -60vh;
+                            /* border: 2px red solid; */
+                            position: absolute;
+                            h2{
+                                font-size: 30px;
+                            }
+                            p{
+                                font-size: 0px;
+                            }
+                        }
+                        .rightText{
+                            width: 100%;
+                           position: absolute;
+                            /* border: 2px red solid; */
+
+                            div{
+                                img{
+                                    width: 30%;
+                                }
+                                h3{
+                                    font-size: 15px;
+                                }
+                                p{
+                                    font-size: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+                #bullets{
+                    gap: 20px;
+                    /* bottom: 0; */
+                    label{
+                        width: 14px;
+                        height: 14px;
+                    }
+                    label::after{
+                        width: 21px;
+                        height: 21px;
+                    }
+                }
+                
+            #slide1:checked ~ #control label:nth-child(2),
+            #slide2:checked ~ #control label:nth-child(3),
+            #slide3:checked ~ #control label:nth-child(4),
+            #slide4:checked ~ #control label:nth-child(5),
+            #slide5:checked ~ #control label:nth-child(6){
+                
+
+                right: -5%;
+                top: 80%;
+                cursor: pointer;
+               
+            }
+            #slide2:checked ~ #control label:nth-child(1),
+            #slide3:checked ~ #control label:nth-child(2),
+            #slide4:checked ~ #control label:nth-child(3),
+            #slide5:checked ~ #control label:nth-child(4),
+            #slide6:checked ~ #control label:nth-child(5){
+                
+                left: -5%;
+                top: 80%;
+                &:hover{
+                    transform: scale(1.5);
+                }
+            }
+            }
+        }
+    }
+    #main{
+        nav{
+            .link{
+                a{
+                    font-size: 15px;
+                }
+            }
+        }
+        #Concept{
+            background-image: linear-gradient(0deg, rgba(180,179,179,0) 55%, rgba(0,0,0,1) 93%);
+            display: block;
+            .text{
+                width: 100%;
+                text-align: center;
+                margin-top: 20px;
+                h1{
+                    font-size: 30px;
+                }
+            }
+            video{
+                display: block;
+                height: 50%;
+                position: relative;
+            }
+        }
+        #Performance{
+            .top{
+                flex-direction: column;
+                video{
+                    width: 100%;
+                }
+                .text{
+
+                    width: 100%;
+                    h1{
+                        font-size: 30px;
+                    }
+                    p{
+                        font-size: 15px;
+                    }
+                }
+            }
+           
+        }
+        #Sound{
+            gap: 20px;
+            h1{
+                font-size: 30px;
+            }
+            .Container{
+                height: 80%;
+                flex-direction: column;
+                .left{
+                    width: 100%;
+                    padding: 0 10%;
+                    order: 2;
+                    p{
+                        font-size: 15px;
+                    }
+                }
+                .right{
+
+                    clip-path: none;
+                    order: 1;
+                    width: 90%;
+                    .imgContainer{
+                        img{
+                            object-fit: cover;
+                            height: 200px;
+                            width: 100%;
+                        }
+                    }
+
+                }
+            }
+        }
+        #Gallery{
+            position: relative;
+            height: auto;
+            h1{
+                font-size: 30px;
+            }
+            .item{
+                grid-template-columns: repeat(1,1fr);
+                grid-template-rows: repeat(6,1fr);
+                grid-template-areas: 
+                "a"
+                "b"
+                "c"
+                "d"
+                "e"
+                "f";
+            }
+        }
+    }
+    .footer {
+        height: auto;
+        .info-01 {
+            flex-direction: column;
+            gap: 3rem;
+
+            .social-media {
+                width: 100%;
+            }
+        }
+        .info-03{
+            .company{
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                a{
+                    .porsche{
+                        width: 50vw;
+                    }
+                    .papan{
+                        width: 42vw;
+                    }
+                }
+                
+            }
+        }
+    }
+
+
+    
 }
